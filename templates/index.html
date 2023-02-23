@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <form method="POST" action="">
+        {{ form.csrf_token }}
+        {{ form.text.label }}
+        {{ form.text() }}
+        <button type="submit">Post</button>
+        <button id="add-text-field" type="button">Add new input</button>
+    </form>
+</body>
+<script>
+    $(document).ready(function() {
+        $('#add-text-field').click(function(e){
+            e.preventDefault();
+            let allTextFieldWrapper = $('#text');
+            let allTextField = allTextFieldWrapper.find('input');
+            let textInputIds = []
+            allTextField.each(function(index, element) {
+                textInputIds.push(parseInt($(element).attr('name').split('-')[1]));
+            });
+            let newFieldName = `text-${Math.max(...textInputIds) + 1}`;
+            allTextFieldWrapper.append(`
+                <li><label for="${newFieldName}">input name ${textInputIds.length + 1} </label> <input id="${newFieldName}" name="${newFieldName}" type="text" value=""></li> 
+            `);
+        });
+    });
+    
+</script>
+</html>
