@@ -26,7 +26,6 @@
 4. Создать файл элементов с расширением .service и записат конфигурацию для Gunicorn:
     ```bash
    sudo nano /etc/systemd/system/myproject.service
-   ```
 
     [Unit]
     Description=Gunicorn instance to serve proj
@@ -41,6 +40,7 @@
 
     [Install]
     WantedBy=multi-user.target
+    ```
 
 5. Запустить службу Gunicorn и активируем:
     ```bash
@@ -51,7 +51,6 @@
 6. Создать файл конфигурации серверных блоков в каталоге Nginx:
     ```bash
    sudo nano /etc/nginx/sites-available/myproject
-   ```
 
     server {
         listen 80;
@@ -62,6 +61,7 @@
             proxy_pass http://unix:/home/anton/myproject/proj/myproject.sock;
         }
     }
+    ```
 
 7. Активировать созданную конфигурацию Nginx:
     ```bash
