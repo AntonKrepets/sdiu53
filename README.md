@@ -25,7 +25,7 @@
 
 4. Создать файл элементов с расширением .service и записат конфигурацию для Gunicorn:
     ```bash
-   sudo nano /etc/systemd/system/myproject.service
+   sudo nano /etc/systemd/system/proj.service
 
     [Unit]
     Description=Gunicorn instance to serve proj
@@ -50,7 +50,7 @@
 
 6. Создать файл конфигурации серверных блоков в каталоге Nginx:
     ```bash
-   sudo nano /etc/nginx/sites-available/myproject
+   sudo nano /etc/nginx/sites-available/proj
 
     server {
         listen 80;
